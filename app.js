@@ -1,14 +1,14 @@
-const pageScraper = require('./scrapers/pageScraper');
+const paginationScraper = require('./scrapers/paginationScraper');
 const fs = require('fs');
 
 (async function main() {
     try {
-        const urlInicial = 'https://www.racius.com/actividades-dos-organismos-internacionais-e-outras-instituicoes-extraterritoriais/';
+        const urlInicial = 'https://www.racius.com/transportes-maritimos-nao-costeiros-de-passageiros/';
 
-        console.log("🔍 Iniciando scraping no site Racius...");
+        console.log("🔍 Iniciando scraping no site Racius com paginação...");
 
-        // Chama o scraper da página de resultados
-        const resultados = await pageScraper(urlInicial);
+        // Chama o scraper de paginação
+        const resultados = await paginationScraper(urlInicial);
 
         // Armazena os dados no ficheiro JSON
         fs.writeFileSync('resultados.json', JSON.stringify(resultados, null, 2));
