@@ -16,6 +16,10 @@ async function detailScraper(url) {
 
         const extractedData = {};
 
+        // Busca o título da empresa
+        const companyTitle = $('h1.company__name').text().trim();
+        extractedData['Empresa'] = companyTitle;
+
         const processDivs = (container) => {
             container.each((_, element) => {
                 const key = $(element).find('.detail__key-info').text().trim();
